@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # Hata riskini azaltmak için sürümü sabitledik
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4 # Bir alt sürüme çektik, daha kararlıdır
         with:
           python-version: '3.10'
 
