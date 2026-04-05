@@ -1,5 +1,7 @@
 name: OzkanGMI APK Build
-on: [push, pull_request]
+on: workflow_dispatch: # Bu satır manuel başlatma düğmesi ekler
+  push:
+    branches: [ main ]
 
 jobs:
   build:
