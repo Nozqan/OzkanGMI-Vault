@@ -1,4 +1,4 @@
-name: OzkanGMI APK Build Final # İsmi biraz değiştirdik ki sistem yeni algılasın
+name: Ozkan_Build_Final_v1
 
 on:
   workflow_dispatch:
@@ -7,28 +7,28 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-20.04 # En hızlı ve uyumlu sürüm
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install System Dependencies
+      - name: Install Tools
         run: |
           sudo apt-get update
           sudo apt-get install -y git zip unzip openjdk-11-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
           sudo pip3 install --upgrade pip
           sudo pip3 install buildozer cython==0.29.33 kivy
 
-      - name: Build with Buildozer
+      - name: Build APK
         run: |
           yes | buildozer android debug
         env:
           ACCEPT_SDK_LICENSE: "True"
 
-      - name: Upload APK
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: OzkanGMI-Paketim
+          name: Ozkan-APK
           path: bin/*.apk
           
